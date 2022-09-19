@@ -3,14 +3,14 @@ import {INews} from "../../pages/News/types";
 import axios from "axios";
 
 const newsInitialState: INews = {
-    news: []
+    news: [],
+
 }
 
 export const fetchNews = createAsyncThunk(
     'news/fetchNews',
-    async () => {
+    async (thunkAPI) => {
         const {data} = await axios.get(`https://631a728bfae3df4dcfe6211f.mockapi.io/news`)
-        // console.log(data)
         return data
     }
 )
@@ -26,7 +26,6 @@ const newsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchNews.fulfilled, (state, action) => {
             state.news = action.payload
-            // console.log(action.payload)
         })
     },
 })

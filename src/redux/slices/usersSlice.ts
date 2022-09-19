@@ -7,10 +7,9 @@ const usersInitialState: IUsers = {
 }
 
 export const fetchUser = createAsyncThunk(
-    'users/fetchUsers',
+    'users/fetchUser',
     async () => {
         const {data} = await axios.get(`https://631a728bfae3df4dcfe6211f.mockapi.io/users`)
-        // console.log(data)
         return data
     }
 )
@@ -26,7 +25,6 @@ const usersSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchUser.fulfilled, (state, action) => {
             state.users = action.payload
-            // console.log(action.payload)
         })
     },
 })

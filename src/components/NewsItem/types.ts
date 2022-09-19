@@ -3,7 +3,6 @@ export interface INews {
 }
 
 interface newsItemTypes {
-    id: number,
     title: string,
     content: string,
     author: string,

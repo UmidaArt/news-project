@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import News from "./pages/News";
@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Users from "./pages/Users";
 
 function App() {
+
   return (
       <BrowserRouter>
           <Header/>

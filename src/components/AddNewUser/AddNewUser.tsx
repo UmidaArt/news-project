@@ -22,7 +22,6 @@ const Input = styled.input`
 
 const Button = styled.button`
   margin-bottom: 30px;
-  background-color: transparent;
   border: none;
   color: white;
   padding: 10px 20px;

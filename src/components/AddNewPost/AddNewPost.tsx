@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-
+import React from 'react';
+import * as Yup from 'yup';
+import { withFormik, FormikProps, FormikErrors, Field } from 'formik';
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -34,8 +35,6 @@ const Select = styled.select`
 const Option = styled.option`
   margin-bottom: 20px;
 `;
-
-
 const TextArea = styled.textarea`
   ::placeholder {
     color: #93969a;

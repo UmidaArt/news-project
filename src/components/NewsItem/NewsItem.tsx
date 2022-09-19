@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styled from "styled-components";
+import {INews} from "./types";
 
 const Container = styled.div`
   padding: 20px;
@@ -36,25 +37,25 @@ const LikeCount = styled.div`
 `;
 
 // @ts-ignore
-const NewsItem = ({news, users}) => {
+const NewsItem: FC<INews> = ({news, users}) => {
 
-    const author = users.find((item: { id: number; }) => item.id === news.author)
+    // const author = users.find((item: { id: string; }) => item.id === news.author)
 
-    // @ts-ignore
     return (
-        <Container>
-            <NewsTitle>{news.title}</NewsTitle>
-            <NewsContent>{news.content}</NewsContent>
-            <Created>
-                <Author>Created by <b></b></Author>
-                {/*<Author>Created by <b>{author.name} {author.surname}</b></Author>*/}
-                <Date></Date>
-                <Likes>
-                    <Heart><i className='bx bx-heart'></i></Heart>
-                    <LikeCount>5</LikeCount>
-                </Likes>
-            </Created>
-        </Container>
+        <></>
+        // <Container>
+        //     <NewsTitle>{news.title}</NewsTitle>
+        //     <NewsContent>{news.content}</NewsContent>
+        //     <Created>
+        //         <Author>Created by <b></b></Author>
+        //         <Author>Created by <b>{author.name} {author.surname}</b></Author>
+        //         <Date></Date>
+        //         <Likes>
+        //             <Heart><i className='bx bx-heart'></i></Heart>
+        //             <LikeCount>5</LikeCount>
+        //         </Likes>
+        //     </Created>
+        // </Container>
     );
 };
 

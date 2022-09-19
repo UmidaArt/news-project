@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styled from "styled-components";
+import {IUsers} from "../../pages/Users/types";
 
 const UserItem = styled.div`
   padding: 20px;

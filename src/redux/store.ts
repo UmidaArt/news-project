@@ -1,12 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import newsReducer from '../redux/slices/newsSlice'
 import usersReducer from '../redux/slices/usersSlice'
 
-export const store = configureStore({
-    reducer: {
-        news: newsReducer,
-        users: usersReducer
-    }
+const rootReducer = combineReducers({
+    usersReducer,
+    newsReducer
 })
 
-export type AppDispatch = typeof store.dispatch
+export const setUpStore = () => {
+    return configureStore({
+        reducer: rootReducer
+    })
+}
+
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setUpStore>
+export type AppDispatch = AppStore['dispatch']
