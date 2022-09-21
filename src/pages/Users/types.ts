@@ -1,8 +1,10 @@
 export interface IUsers {
-    users: Array<usersItemTypes>
+    users: usersItemTypes[],
+    isLoading: boolean,
+    error: string,
 }
 interface usersItemTypes {
-    id: any;
+    id: number | string;
     createdAt: number,
     name: string,
     surname: string,

@@ -49,15 +49,23 @@ const LikeCount = styled.div`
 const News = () => {
 
     const dispatch = useDispatch<AppDispatch>()
-    const {news} = useAppSelector(s => s.newsReducer)
+    const {news, isLoading, error} = useAppSelector(s => s.newsReducer)
     const {users} = useAppSelector(s => s.usersReducer)
 
-    // const author = users.find((item) => item.id === news.find(author))
+    // const author = users.find((item) => item.id === news.author)
 
     useEffect(() => {
         dispatch(fetchNews())
         dispatch(fetchUser())
     }, [dispatch])
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>{error}</h1>
+    }
 
     return (
         <Container>
@@ -68,7 +76,7 @@ const News = () => {
                         <NewsTitle>{item.title}</NewsTitle>
                         <NewsContent>{item.content}</NewsContent>
                         <Created>
-                            <Author>Created by <b></b></Author>
+                            <Author>Created by <b>{item.author}</b></Author>
                             {/*<Author>Created by <b>{author.name} {author.surname}</b></Author>*/}
                             <Date></Date>
                             <Likes>

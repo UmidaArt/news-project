@@ -43,11 +43,19 @@ const Button = styled.button`
 const Users = () => {
 
     const dispatch = useDispatch<AppDispatch>()
-    const {users} = useAppSelector(s => s.usersReducer)
+    const {users, isLoading, error} = useAppSelector(s => s.usersReducer)
 
     useEffect(() => {
         dispatch(fetchUser())
     }, [dispatch])
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>{error}</h1>
+    }
 
     return (
         <Container>

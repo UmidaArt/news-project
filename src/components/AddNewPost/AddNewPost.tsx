@@ -66,14 +66,14 @@ const AddNewPost = () => {
             <h1>Add a new post</h1>
             <Form >
                 <InputGroup>
-                    <Input placeholder='News title' id='name' type='text'/>
-                    <Select name="select">
+                    <Input placeholder='News title' id='name' type='text' required/>
+                    <Select name="select" required>
                         <Option value="">Select the author</Option>
                         <Option value="author 1">author 1</Option>
                         <Option value="author 2">author 2</Option>
                         <Option value="author 3">author 3</Option>
                     </Select>
-                    <TextArea placeholder="Write your post" rows="10"></TextArea>
+                    <TextArea placeholder="Write your post" rows="10" required></TextArea>
                 </InputGroup>
                 <Button type='submit' >Create news</Button>
             </Form>

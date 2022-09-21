@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styled from "styled-components";
+import {useDispatch} from "react-redux";
+import {NewUser} from "./types";
+import {text} from "stream/consumers";
 
 const Form = styled.form`
     margin-top: 20px;
@@ -34,13 +37,31 @@ const Button = styled.button`
 `;
 
 const AddNewUser = () => {
+
+    const dispatch = useDispatch()
+
+    // @ts-ignore
+    const handleSubmit = (e) => {
+       e.preventDefault()
+        console.log('hh')
+    }
+    const addUser = () => {
+
+    }
+
     return (
         <>
             <h1>Add new user</h1>
-            <Form >
+            <Form onSubmit={handleSubmit}>
                 <InputGroup>
-                    <Input placeholder='Name' id='name' type='text'/>
-                    <Input placeholder='Surname' id='text' type='text'/>
+                    <Input placeholder='Name'
+                           id='name'
+                           type='text'
+                           required
+                           // onChange={(e: { target: { value: string; }; }) => addUser(e.target.value)}
+                           // value={value}
+                    />
+                    <Input placeholder='Surname' id='text' type='text' required/>
                 </InputGroup>
                 <Button type='submit'>Create user</Button>
             </Form>

@@ -4,31 +4,41 @@ import axios from "axios";
 
 const newsInitialState: INews = {
     news: [],
-
+    isLoading: false,
+    error: '',
 }
 
 export const fetchNews = createAsyncThunk(
     'news/fetchNews',
-    async (thunkAPI) => {
-        const {data} = await axios.get(`https://631a728bfae3df4dcfe6211f.mockapi.io/news`)
-        return data
+    async (_, thunkAPI) => {
+        try {
+            const {data} = await axios.get(`https://631a728bfae3df4dcfe6211f.mockapi.io/news`)
+            return data
+        } catch (e) {
+            return thunkAPI.rejectWithValue("Failed to load page :(")
+        }
     }
 )
 
 const newsSlice = createSlice({
     name: 'news',
     initialState: newsInitialState,
-    reducers: {
-        getNews: (state, action) => {
-            state.news = action.payload
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchNews.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.error = ''
             state.news = action.payload
         })
+            .addCase(fetchNews.pending,(state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchNews.rejected, (state, action)=> {
+                state.isLoading = false
+                // @ts-ignore
+                state.error = action.payload
+            })
     },
 })
 
-export const { getNews } = newsSlice.actions
 export default newsSlice.reducer

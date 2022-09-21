@@ -1,9 +1,11 @@
 export interface INews {
-    news: Array<newsItemTypes>
+    news: newsItemTypes[],
+    isLoading: boolean,
+    error: string,
 }
 
 interface newsItemTypes {
-    id: number,
+    id: number | string,
     title: string,
     content: string,
     author: string,
